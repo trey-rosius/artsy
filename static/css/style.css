@@ -98,15 +98,18 @@ body {
             width: 90%; } }
       .login-body__form--zone--email {
         font-size: 1.7rem;
-        padding: 5px;
+        margin-top:5px;
+        padding-left: 1rem;
+        padding-right:1rem;
         border: 0;
-        height: 5rem; }
+        height: 4rem; }
       .login-body__form--zone--password {
         margin-top: 1rem;
         font-size: 1.7rem;
-        padding: 5px;
+        padding-left: 1rem;
+        padding-right:1rem;
         border: 0;
-        height: 5rem; }
+        height: 4rem; }
       .login-body__form--zone--submit {
         margin-top: 2rem;
         font-size: 2rem;
