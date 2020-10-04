@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>&mdash;artsy</title>
+</head>
+ <body>
+       <div class="login-body">
+        <div class="login-body__title">
+            <div class="login-body__title--a">
+                a
+            </div>
+            <div class="login-body__title--r">
+                r
+            </div>
+            <div class="login-body__title--tsy">
+                tsy
+            </div>
+
+        </div>
+           <div class="login-zone">
+
+               <!--<img src="/static/img/SVG/login_bg.svg" alt="Secure Login" class="login-art">-->
+
+
+
+                {% block content %} {% endblock %}
+
+
+           </div>
+       </div>
+
+    </body>
+</html>
