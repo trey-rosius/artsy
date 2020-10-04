@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'login_base.html' %}
+{% block content %}
+<div class="login-body__form">
+               <div class="login-body__form--title">
+                   Login
+               </div>
 
-</body>
-</html>
+               <img src="static/img/SVG/secure_login.svg" alt="Secure Login" class="login-body__form--art">
+            <form action="#" method="POST" class="login-body__form--zone" novalidate>
+                {{form.hidden_tag()}}
+                {{form.email(placeholder=form.email.label.text,size=32,class_="login-body__form--zone--email")}}
+                {{form.password(placeholder=form.password.label.text,size=32,class_="login-body__form--zone--password")}}
+                {{form.submit(class_="login-body__form--zone--submit")}}
+
+              <div class="login-body__form--zone--already">
+                <span>Don't Have An Account ?</span>
+            </div>
+            <Button class="login-body__form--zone--register-btn">
+                Create An Account
+            </Button>
+            <Button class="login-body__form--zone--google-btn">
+                <svg class="login-body__form--zone--google-btn--icon">
+                    <use xlink:href="static/img/SVG/sprites.svg#icon-google"></use>
+                </svg>
+                <span>Log In With Google</span>
+
+            </Button>
+            </form>
+
+
+           </div>
+
+{% endblock %}
