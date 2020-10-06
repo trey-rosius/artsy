@@ -1,7 +1,7 @@
 import functools
 
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
+    Blueprint, flash, g, redirect, render_template, request, session, url_for, json
 )
 
 import pyrebase
@@ -10,19 +10,8 @@ from forms.login import LoginForm
 
 from forms.register import RegisterForm
 
-config = {
-    "apiKey": "AIzaSyCIg12S1t5yvW6BkVyGqVG4TL_z5hPiWHY",
-    "authDomain": "ros-social-media.firebaseapp.com",
-    "databaseURL": "https://ros-social-media.firebaseio.com",
-    "projectId": "ros-social-media",
-    "storageBucket": "ros-social-media.appspot.com",
-    "messagingSenderId": "855026903869",
-    "appId": "1:855026903869:web:1c7b36c9a56897edc9b354",
-    "measurementId": "G-ZG2K8495ST",
-    "serviceAccount": "/Users/imac/PycharmProjects/artsy/fbadminconfig.json"
-}
-# pb = pyrebase.initialize_app(json.load(open('fbconfig.json')))
-firebase = pyrebase.initialize_app(config)
+firebase = pyrebase.initialize_app(json.load(open('fbconfig.json')))
+# firebase = pyrebase.initialize_app(config)
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -49,12 +38,12 @@ def register():
             try:
                 user = auth.create_user_with_email_and_password(registerForm.email.data, registerForm.password.data)
 
-                data ={
-                    u'user_id':user['localId'],
-                    u'email':user['email'],
+                data = {
+                    u'user_id': user['localId'],
+                    u'email': user['email'],
 
                 }
-                userRef = firestore.createUserProfile(data,user_id=user['localId'])
+                userRef = firestore.createUserProfile(data, user_id=user['localId'])
                 flash(userRef)
                 return redirect('/')
             except Exception as err:
@@ -66,6 +55,7 @@ def register():
         flash(error)
 
     return render_template('auth/register.html', form=registerForm)
+
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
@@ -82,7 +72,7 @@ def login():
             data = {
                 u'user_id': user['localId'],
                 u'email': user['email'],
-                u'login':True
+                u'login': True
 
             }
             userRef = firestore.createUserProfile(data, user_id=user['localId'])
