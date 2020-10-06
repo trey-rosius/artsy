@@ -9,15 +9,28 @@
             <form action="#" method="POST" class="login-body__form--zone" novalidate>
                 {{form.hidden_tag()}}
                 {{form.full_names(placeholder=form.full_names.label.text,size=32,class_="login-body__form--zone--email")}}
-                {{form.email(placeholder=form.email.label.text,size=32,class_="login-body__form--zone--email")}}
+
+                    {{form.email(placeholder=form.email.label.text,size=32,class_="login-body__form--zone--email")}}
+                    {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+
+
+
                 {{form.password(placeholder=form.password.label.text,size=32,class_="login-body__form--zone--password")}}
-                {{form.submit(class_="login-body__form--zone--submit")}}
+
+                     {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            {{form.submit(class_="login-body__form--zone--submit")}}
 
               <div class="login-body__form--zone--already">
                 <span>Already Have An Account ?</span>
             </div>
             <Button class="login-body__form--zone--register-btn">
-                Log In
+                <a href="{{url_for('auth.login')}}">Log In</a>
             </Button>
             <Button class="login-body__form--zone--google-btn">
                 <svg class="login-body__form--zone--google-btn--icon">
