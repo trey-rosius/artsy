@@ -11,11 +11,11 @@ from forms.login import LoginForm
 from forms.register import RegisterForm
 
 firebase = pyrebase.initialize_app(json.load(open('fbconfig.json')))
-# firebase = pyrebase.initialize_app(config)
+
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-from flask import Flask, request
+
 
 
 # Connect to firebase
@@ -77,7 +77,7 @@ def login():
             }
             userRef = firestore.createUserProfile(data, user_id=user['localId'])
             flash(userRef)
-            return redirect('/')
+            return redirect(url_for('profile.update_profile',user_id=user['localId']))
         except Exception as err:
             """Return JSON instead of HTML for HTTP errors."""
             # start with the correct headers and status code from the error

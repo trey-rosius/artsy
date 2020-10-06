@@ -47,6 +47,12 @@ def next_page(limit=10, start_after=None):
     return docs, last_title
 
 
+def readUserInfo(user_id):
+    db = firestore.Client()
+    user_ref = db.collection(u'Users').document(user_id)
+    snapshot =user_ref.get()
+    return document_to_dict(snapshot)
+
 def read(book_id):
     # [START bookshelf_firestore_client]
     db = firestore.Client()

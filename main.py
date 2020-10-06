@@ -56,10 +56,11 @@ app = Flask(__name__)
 app.config.update(
     SECRET_KEY='secret',
     MAX_CONTENT_LENGTH=8 * 1024 * 1024,
-    ALLOWED_EXTENSIONS=set(['png', 'jpg', 'jpeg', 'gif'])
+    ALLOWED_EXTENSIONS={'png', 'jpg', 'jpeg', 'gif'}
 )
-from blueprints import auth
+from blueprints import auth,profile
 app.register_blueprint(auth.bp)
+app.register_blueprint(profile.bp)
 app.debug = False
 app.testing = False
 
