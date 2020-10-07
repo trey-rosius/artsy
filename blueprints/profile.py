@@ -49,27 +49,27 @@ def view_profile(user_id: str):
     return render_template('profile/profile.html', user=user)
 
 
-@bp.route('/<user_id>/update', methods=('GET', 'POST'))
+@bp.route('/<user_id>/update', methods=['GET', 'POST'])
 def update_profile(user_id: str):
-    user = firestore.readUserInfo(user_id)
+
     form = ProfileForm()
-    form.full_names.data = user['full_names']
-    form.email.data = user["email"]
-    form.phone_number.data = user["phone_number"]
-    form.address.data = user["address"]
+    user = firestore.readUserInfo(user_id)
 
     if form.validate_on_submit():
-        filename = secure_filename(form.photo.data.filename)
-        image_url = upload_image_file(form.photo.data)
-        data = {
-            u'full_names': form.full_names.data,
-            u'phone_number': form.phone_number.data,
-            u'address': form.address.data,
-            u'profile_pic': image_url
-        }
-        userInfo = firestore.createUserProfile(data, user_id)
-        if userInfo:
+        try:
+            filename = secure_filename(form.photo.data.filename)
+            image_url = upload_image_file(form.photo.data)
+            data = {
+                u'full_names': form.full_names.data,
+                u'phone_number': form.phone_number.data,
+                u'address': form.address.data,
+                u'profile_pic': image_url
+            }
+            userInfo = firestore.createUserProfile(data, user_id)
+            flash(userInfo)
             return redirect(url_for('profile.view_profile', user_id=user_id))
-        return render_template('profile/update_profile.html', form=form)
+
+        except Exception as err:
+            flash(err)
 
     return render_template('profile/update_profile.html', form=form)

@@ -107,10 +107,12 @@ def login():
         flash(error)
 
     return render_template('auth/login.html', form=loginForm)
+
+
 @bp.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('home.list'))
 
 def login_required(view):
     @functools.wraps(view)
@@ -121,3 +123,5 @@ def login_required(view):
         return view(**kwargs)
 
     return wrapped_view
+
+

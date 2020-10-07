@@ -58,9 +58,10 @@ app.config.update(
     MAX_CONTENT_LENGTH=8 * 1024 * 1024,
     ALLOWED_EXTENSIONS={'png', 'jpg', 'jpeg', 'gif'}
 )
-from blueprints import auth,profile
+from blueprints import auth,profile,home
 app.register_blueprint(auth.bp)
 app.register_blueprint(profile.bp)
+app.register_blueprint(home.bp)
 app.debug = False
 app.testing = False
 
@@ -90,13 +91,7 @@ def handle_exception(e):
     })
     response.content_type = "application/json"
     return response
-@app.route('/')
-def list():
-    start_after = request.args.get('start_after', None)
-    books, last_title = firestore.next_page(start_after=start_after)
 
-    #return render_template('list.html', books=books, last_title=last_title)
-    return render_template('empty.html')
 
 @app.route('/login')
 def login():

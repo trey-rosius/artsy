@@ -64,19 +64,18 @@
 
 
                    {% block content %}
-                   <form  class="header__profile" method="POST" novalidate enctype="multipart/form-data">
-                {{form.hidden_tag()}}
-        {% for message in get_flashed_messages() %}
+ {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-                       <img img src="/static/img/SVG/account_white.svg" alt="Rosius" class="header__profile--picture"><br>
-                         <div>
+                   <form action="" class="header__profile" method="post" enctype="multipart/form-data" novalidate>
+                {{form.hidden_tag()}}
 
-                         </div>
+                       <img src="/static/img/SVG/account_white.svg" alt="Rosius" class="header__profile--picture"><br>
+
                        {{ form.photo(class_='header__profile--picture-btn') }}
                        {{form.full_names( placeholder=form.full_names.label.text,size=32,class_="header__profile--full_names")}}
 
-                    {{form.email(placeholder=form.email.label.text,disabled='disabled',  size=32,class_="header__profile--email")}}
+                    {{form.email(placeholder=form.email.label.text, size=32,class_="header__profile--email")}}
                     {% for error in form.email.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
