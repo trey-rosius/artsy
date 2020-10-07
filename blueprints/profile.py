@@ -38,7 +38,7 @@ def upload_image_file(img):
 # [END upload_image_file]
 
 
-@bp.route('/<user_id/view')
+@bp.route('/<user_id>/view')
 def view_profile(user_id:str):
     user = firestore.readUserInfo(user_id)
 
