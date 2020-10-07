@@ -3,7 +3,7 @@
 {% block content %}
 
 <section class="profile">
-    <img src="img/ros1.jpg" alt="Rosius" class="profile__profile-pic">
+    <img src="{{user.profile_pic}}" alt="Rosius" class="profile__profile-pic">
 
     <div class="profile__details">
 
@@ -12,7 +12,7 @@
         <div class="profile__details--phone-number">+237 675079106</div>
         <div class="profile__details--address">Courts Supreme, Makepe, Douala, Cameroon</div>
 
-        <a href="#" class="profile__details--edit-btn">Edit Profile</a>
+        <a href="{{url_for('profile.update_profile',user_id=user.user_id)}}" class="profile__details--edit-btn">Edit Profile</a>
     </div>
 
 
