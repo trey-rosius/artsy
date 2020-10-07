@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="profile">
+    <img src="img/ros1.jpg" alt="Rosius" class="profile__profile-pic">
+
+    <div class="profile__details">
+
+        <div class="profile__details--full-names">{{user.full_names}}</div>
+        <div class="profile__details--email">treyrosius@gmail.com</div>
+        <div class="profile__details--phone-number">+237 675079106</div>
+        <div class="profile__details--address">Courts Supreme, Makepe, Douala, Cameroon</div>
+
+        <a href="#" class="profile__details--edit-btn">Edit Profile</a>
+    </div>
+
+
+   </section>
+
+{%endblock %}

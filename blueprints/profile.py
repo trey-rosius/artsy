@@ -38,6 +38,13 @@ def upload_image_file(img):
 # [END upload_image_file]
 
 
+@bp.route('/<user_id/view')
+def view_profile(user_id:str):
+    user = firestore.readUserInfo(user_id)
+
+    return render_template('profile/profile.html',user=user)
+
+
 @bp.route('/<user_id>/update', methods=('GET', 'POST'))
 def update_profile(user_id:str):
     user = firestore.readUserInfo(user_id)
@@ -57,5 +64,5 @@ def update_profile(user_id:str):
             u'profile_pic':image_url
         }
         userInfo = firestore.createUserProfile(data,user_id)
-        return redirect('/profile/'+user_id+"/view")
+        return redirect(url_for('profile.view_profile',user_id=user_id))
     return render_template('profile/update_profile.html', form=form)

@@ -41,6 +41,10 @@ def register():
                 data = {
                     u'user_id': user['localId'],
                     u'email': user['email'],
+                    u'phone_number': '',
+                    u'full_names': '',
+                    u'address': '',
+                    u'login': False
 
                 }
                 userRef = firestore.createUserProfile(data, user_id=user['localId'])
@@ -72,6 +76,9 @@ def login():
             data = {
                 u'user_id': user['localId'],
                 u'email': user['email'],
+                u'phone_number':'',
+                u'full_names':'',
+                u'address':'',
                 u'login': True
 
             }
