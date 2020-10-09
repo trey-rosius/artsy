@@ -1,10 +1,8 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 <html en="lang">
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 
         <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto+Mono&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
@@ -51,8 +49,13 @@
         </div>
 
          <section class="main-section">
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
 
-            <div class="header">
+             {% block menu %}
+              <div class="header">
+
                 <div class="header__title">
                     <div class="header__title--text">
                         Update Profile
@@ -63,28 +66,32 @@
                 </div>
 
 
+
+            </div>
+             {% endblock %}
+
                    {% block content %}
  {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-                   <form action="" class="header__profile" method="post" enctype="multipart/form-data" novalidate>
+                   <form action="" class="content" method="post" enctype="multipart/form-data" novalidate>
                 {{form.hidden_tag()}}
 
-                       <img src="{{form.photo.data}}" alt="Rosius" class="header__profile--picture"><br>
+                       <img src="{{form.photo.data}}" alt="Rosius" class="content__picture"><br>
 
-                       {{ form.photo(class_='header__profile--picture-btn') }}
-                       {{form.full_names(placeholder=form.full_names.label.text,size=32,class_="header__profile--full_names")}}
+                       {{ form.photo(class_='content__picture-btn') }}
+                       {{form.full_names(placeholder=form.full_names.label.text,size=32,class_="content__full_names")}}
 
-                    {{form.email(placeholder=form.email.label.text, size=32,class_="header__profile--email")}}
+                    {{form.email(placeholder=form.email.label.text, size=32,class_="content__email")}}
                     {% for error in form.email.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-{{form.phone_number(placeholder=form.phone_number.label.text,size=32,class_="header__profile--phone-number")}}
-                       {{form.address(placeholder=form.address.label.text,size=32,class_="header__profile--address")}}
+{{form.phone_number(placeholder=form.phone_number.label.text,size=32,class_="content__phone-number")}}
+                       {{form.address(placeholder=form.address.label.text,size=32,class_="content__address")}}
 
 
 
-            {{form.submit(class_="header__profile--btn")}}
+            {{form.submit(class_="content__btn")}}
 
                    </form>
 
@@ -92,9 +99,6 @@
 
 
 
-
-
-            </div>
 
 
 

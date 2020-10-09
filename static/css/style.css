@@ -54,12 +54,15 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr); }
+    .sidebar__middle--link{
+    grid-column: 2/3;
+      grid-row: 1/2;
+    }
     .sidebar__middle--img {
       width: 6rem;
       height: 6rem;
       border-radius: 100%;
-      grid-column: 2/3;
-      grid-row: 1/2;
+
       justify-self: center;
       border-style: solid;
       border-color: white; }
@@ -108,10 +111,10 @@ body {
 
 .header {
   grid-column: 1/-1;
-  grid-row: 1/6;
+  grid-row: 1/2;
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: 20rem repeat(8, min-content); }
+  grid-template-rows: 20rem; }
   @media only screen and (max-width: 112em) {
     .header {
       grid-template-rows: 10rem repeat(8, min-content); } }
@@ -143,18 +146,18 @@ body {
       grid-column: 1/-1;
       grid-row: 3/4;
       align-self: flex-end; }
-  .header__profile {
-    grid-row: 3/-1;
+  .content {
+    grid-row: 2/-1;
     grid-column: 1/8;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(14, min-content);
     gap: 1rem; }
     @media only screen and (max-width: 112em) {
-      .header__profile {
+      .content__profile {
         grid-row: 2/-1;
         grid-column: 1/8; } }
-    .header__profile--picture {
+    .content__picture {
       width: 10rem;
       height: 10rem;
       border-radius: 100%;
@@ -163,7 +166,7 @@ body {
       place-self: center;
       border-style: solid;
       border-color: white; }
-      .header__profile--picture-btn {
+      .content__picture-btn {
 
 
       grid-row: 2/4;
@@ -172,10 +175,10 @@ body {
        }
 
       @media only screen and (max-width: 112em) {
-        .header__profile--picture {
+        .content__picture {
           grid-row: 2/4;
           grid-column: 2/5; } }
-    .header__profile--full_names {
+    .content__full_names {
       grid-row: 5/6;
       grid-column: 3/7;
       font-size: 1.7rem;
@@ -183,10 +186,10 @@ body {
       padding-left: 5px;
       padding-right: 5px; }
       @media only screen and (max-width: 112em) {
-        .header__profile--full_names {
+        .content__full_names {
           grid-row: 5/6;
           grid-column: 1/6; } }
-    .header__profile--email {
+    .content__email {
       grid-row: 6/7;
       grid-column: 3/7;
       font-size: 1.7rem;
@@ -194,10 +197,10 @@ body {
       padding-left: 5px;
       padding-right: 5px; }
       @media only screen and (max-width: 112em) {
-        .header__profile--email {
+        .content__email {
           grid-row: 6/7;
           grid-column: 1/6; } }
-    .header__profile--phone-number {
+    .content__phone-number {
       grid-row: 7/8;
       grid-column: 3/7;
       font-size: 1.7rem;
@@ -205,10 +208,10 @@ body {
       padding-left: 5px;
       padding-right: 5px; }
       @media only screen and (max-width: 112em) {
-        .header__profile--phone-number {
+        .content__phone-number {
           grid-row: 7/8;
           grid-column: 1/6; } }
-    .header__profile--address {
+    .content__address {
       grid-row: 8/10;
       grid-column: 3/7;
       font-size:2rem;
@@ -217,10 +220,10 @@ body {
       padding-top:5px;
       padding-right: 5px; }
       @media only screen and (max-width: 112em) {
-        .header__profile--address {
+        .content__address {
           grid-row: 8/10;
           grid-column: 1/6; } }
-    .header__profile--btn {
+    .content__btn {
       grid-row: 10/11;
       grid-column: 3/7;
       font-size: 1.7rem;
@@ -234,10 +237,10 @@ body {
 
       text-decoration: none;
       height: 5rem;}
-      .header__profile--btn:hover {
+      .content__btn:hover {
         background-color: #6759ae; }
       @media only screen and (max-width: 112em) {
-        .header__profile--btn {
+        .content__btn {
           grid-row: 10/11;
           grid-column: 1/6;
            font-size: 2rem;
