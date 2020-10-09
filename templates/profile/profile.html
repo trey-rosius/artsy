@@ -8,9 +8,9 @@
     <div class="profile__details">
 
         <div class="profile__details--full-names">{{user.full_names}}</div>
-        <div class="profile__details--email">treyrosius@gmail.com</div>
-        <div class="profile__details--phone-number">+237 675079106</div>
-        <div class="profile__details--address">Courts Supreme, Makepe, Douala, Cameroon</div>
+        <div class="profile__details--email">{{user.email}}</div>
+        <div class="profile__details--phone-number">{{user.phone_number}}</div>
+        <div class="profile__details--address">{{user.address}}</div>
 
         <a href="{{url_for('profile.update_profile',user_id=user.user_id)}}" class="profile__details--edit-btn">Edit Profile</a>
     </div>

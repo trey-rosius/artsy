@@ -31,7 +31,7 @@
             <div class="sidebar__middle">
 {% if g.user %}
 <a href="{{ url_for('profile.view_profile',user_id=g.user['user_id'])}}">
-                     <img src="/static/img/ros1.jpg" alt="Rosius" class="sidebar__middle--img">
+                     <img src="{{g.user.profile_pic}}" alt="Rosius" class="sidebar__middle--img">
 
 </a>
                 {%else %}

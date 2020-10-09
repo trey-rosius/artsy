@@ -71,5 +71,9 @@ def update_profile(user_id: str):
 
         except Exception as err:
             flash(err)
-
+    form.full_names.data = user['full_names']
+    form.email.data = user["email"]
+    form.phone_number.data = user["phone_number"]
+    form.address.data = user["address"]
+    form.photo.data = user["profile_pic"]
     return render_template('profile/update_profile.html', form=form)

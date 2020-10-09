@@ -70,10 +70,10 @@
                    <form action="" class="header__profile" method="post" enctype="multipart/form-data" novalidate>
                 {{form.hidden_tag()}}
 
-                       <img src="/static/img/SVG/account_white.svg" alt="Rosius" class="header__profile--picture"><br>
+                       <img src="{{form.photo.data}}" alt="Rosius" class="header__profile--picture"><br>
 
                        {{ form.photo(class_='header__profile--picture-btn') }}
-                       {{form.full_names( placeholder=form.full_names.label.text,size=32,class_="header__profile--full_names")}}
+                       {{form.full_names(placeholder=form.full_names.label.text,size=32,class_="header__profile--full_names")}}
 
                     {{form.email(placeholder=form.email.label.text, size=32,class_="header__profile--email")}}
                     {% for error in form.email.errors %}
