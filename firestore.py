@@ -75,6 +75,12 @@ def createUserProfile(data, user_id=None):
     user_ref.set(data, merge=True)
     return document_to_dict(user_ref.get())
 
+def addItem(data, user_id=None):
+    db = firestore.Client()
+    item_ref = db.collection(u'Items').document(user_id)
+    item_ref.set(data, merge=True)
+    return document_to_dict(item_ref.get())
+
 
 create = update
 
