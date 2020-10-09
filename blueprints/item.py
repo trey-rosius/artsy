@@ -42,9 +42,13 @@ def upload_image_file(img):
 
 # [END upload_image_file]
 
+@bp.route('/empty')
+def view_items():
+    return render_template('/empty.html')
 
-@bp.route('/addItem', methods=['GET', 'POST'])
-def add_item():
+
+@bp.route('/<user_id>/addItem', methods=['GET', 'POST'])
+def add_item(user_id: str):
     form = AddItemForm()
 
     if form.validate_on_submit():
@@ -55,7 +59,9 @@ def add_item():
                 u'name': form.name.data,
                 u'description': form.desc.data,
                 u'price': form.price.data,
-                u'image_url': image_url
+                u'image_url': image_url,
+                u'user_id': user_id
+
             }
             userInfo = firestore.addItem(data)
             flash(userInfo)

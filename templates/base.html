@@ -63,7 +63,7 @@
 
    {% block content%} {%endblock%}
 {% if g.user %}
- <a href="{{url_for('item.add_item')}}" class="fab">
+ <a href="{{url_for('item.add_item',user_id=g.user.user_id)}}" class="fab">
     <svg class="fab__icon">
         <use xlink:href="/static/img/SVG/sprites.svg#icon-plus"></use>
     </svg>
