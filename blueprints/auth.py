@@ -10,7 +10,7 @@ from forms.login import LoginForm
 
 from forms.register import RegisterForm
 
-firebase = pyrebase.initialize_app(json.load(open('fbconfig.json')))
+firebase = pyrebase.initialize_app(json.load(open('firebase_config.json')))
 
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')

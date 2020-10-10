@@ -14,7 +14,6 @@ import google.cloud.logging
 import storage
 from forms.register import RegisterForm
 
-firebase = pyrebase.initialize_app(json.load(open('fbconfig.json')))
 # firebase = pyrebase.initialize_app(config)
 from werkzeug.utils import secure_filename
 
