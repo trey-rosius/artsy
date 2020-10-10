@@ -31,25 +31,7 @@ from forms.register import RegisterForm
 
 
 
-def upload_image_file(img):
-    """
-    Upload the user-uploaded file to Google Cloud Storage and retrieve its
-    publicly-accessible URL.
-    """
-    if not img:
-        return None
 
-    public_url = storage.upload_file(
-        img.read(),
-        img.filename,
-        img.content_type
-    )
-
-    current_app.logger.info(
-        'Uploaded file %s as %s.', img.filename, public_url)
-
-    return public_url
-# [END upload_image_file]
 
 
 app = Flask(__name__)
@@ -94,64 +76,6 @@ def handle_exception(e):
     response.content_type = "application/json"
     return response
 
-
-@app.route('/login')
-def login():
-    loginForm = LoginForm()
-    return render_template('auth/login.html', form=loginForm)
-
-
-
-
-
-@app.route('/books/<book_id>')
-def view(book_id):
-    book = firestore.read(book_id)
-    return render_template('view.html', book=book)
-
-
-@app.route('/books/add', methods=['GET', 'POST'])
-def add():
-    if request.method == 'POST':
-        data = request.form.to_dict(flat=True)
-
-        # If an image was uploaded, update the data to point to the new image.
-        image_url = upload_image_file(request.files.get('image'))
-
-        if image_url:
-            data['imageUrl'] = image_url
-
-        book = firestore.create(data)
-
-        return redirect(url_for('.view', book_id=book['id']))
-
-    return render_template('form.html', action='Add', book={})
-
-
-@app.route('/books/<book_id>/edit', methods=['GET', 'POST'])
-def edit(book_id):
-    book = firestore.read(book_id)
-
-    if request.method == 'POST':
-        data = request.form.to_dict(flat=True)
-
-        # If an image was uploaded, update the data to point to the new image.
-        image_url = upload_image_file(request.files.get('image'))
-
-        if image_url:
-            data['imageUrl'] = image_url
-
-        book = firestore.update(data, book_id)
-
-        return redirect(url_for('.view', book_id=book['id']))
-
-    return render_template('form.html', action='Edit', book=book)
-
-
-@app.route('/books/<book_id>/delete')
-def delete(book_id):
-    firestore.delete(book_id)
-    return redirect(url_for('.list'))
 
 
 @app.route('/logs')
