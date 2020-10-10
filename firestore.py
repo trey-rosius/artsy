@@ -27,6 +27,20 @@ def document_to_dict(doc):
     return doc_dict
 
 
+def load_items(limit=100):
+    #  db = firestore.Client()
+    db = firestore.Client.from_service_account_json('/Users/imac/documents/service_acc/service_account.json')
+
+    query = db.collection(u'Items').limit(limit).order_by(u'item_id')
+
+    docs = query.stream()
+    docs = list(map(document_to_dict, docs))
+
+    return docs
+
+
+"""
+
 def next_page(limit=10, start_after=None):
     #  db = firestore.Client()
     db = firestore.Client.from_service_account_json('/Users/imac/documents/service_acc/service_account.json')
@@ -46,12 +60,15 @@ def next_page(limit=10, start_after=None):
         last_title = docs[-1][u'title']
     return docs, last_title
 
+"""
+
 
 def readUserInfo(user_id):
     db = firestore.Client()
     user_ref = db.collection(u'Users').document(user_id)
-    snapshot =user_ref.get()
+    snapshot = user_ref.get()
     return document_to_dict(snapshot)
+
 
 def read(book_id):
     # [START bookshelf_firestore_client]
@@ -75,10 +92,12 @@ def createUserProfile(data, user_id=None):
     user_ref.set(data, merge=True)
     return document_to_dict(user_ref.get())
 
-def addItem(data, user_id=None):
+
+def addItem(data, item_id=None):
     db = firestore.Client()
-    item_ref = db.collection(u'Items').document(user_id)
+    item_ref = db.collection(u'Items').document(item_id)
     item_ref.set(data, merge=True)
+
     return document_to_dict(item_ref.get())
 
 

@@ -56,18 +56,15 @@ def upload_file(file_stream, filename, content_type):
                     'GOOGLE_CLOUD_PROJECT') + '_bucket'
                '''
 
-
-
     bucketname = 'ros-social-media_bucket'
     from google.cloud import storage
     # [START bookshelf_cloud_storage_client]
     storage_client = storage.Client.from_service_account_json(
         '/Users/imac/documents/service_acc/service_account.json')
 
-    #client = storage.Client()
+    # client = storage.Client()
     bucket = storage_client.bucket(bucketname)
     blob = bucket.blob(filename)
-
 
     blob.upload_from_string(
         file_stream,

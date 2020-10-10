@@ -7,7 +7,7 @@ from wtforms.validators import DataRequired,Length
 
 class AddItemForm(FlaskForm):
     name = StringField('Item Description', validators=[DataRequired(), Length(min=6, max=200)])
-    desc = TextAreaField('Item Description',validators=[DataRequired(), Length(min=6, max=200)])
+    desc = TextAreaField('Item Description',validators=[DataRequired(), Length(min=6, max=500)])
     price = StringField('Item Price', validators=[DataRequired(), Length(min=6, max=35)])
 
     photo = FileField(validators=[FileRequired()])
