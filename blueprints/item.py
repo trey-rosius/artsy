@@ -20,6 +20,8 @@ from werkzeug.utils import secure_filename
 bp = Blueprint('item', __name__)
 
 
+
+
 def upload_image_file(img):
     """
     Upload the user-uploaded file to Google Cloud Storage and retrieve its
@@ -41,6 +43,7 @@ def upload_image_file(img):
 
 
 # [END upload_image_file]
+
 
 
 
@@ -85,3 +88,5 @@ def add_item(user_id: str):
             flash(err)
 
     return render_template('item/add_item.html', form=form)
+
+

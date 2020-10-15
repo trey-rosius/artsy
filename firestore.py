@@ -70,6 +70,16 @@ def readUserInfo(user_id):
     return document_to_dict(snapshot)
 
 
+def add_to_cart(data: dict, user_id: str, cart_id: str):
+    db = firestore.Client()
+    if __name__ == '__main__':
+        cart_ref = db.collection(u'Users').document(user_id) \
+            .collection(u'Cart') \
+            .document(cart_id) \
+            .set(data, merge=True)
+    return document_to_dict(cart_ref)
+
+
 def read(book_id):
     # [START bookshelf_firestore_client]
     db = firestore.Client()
@@ -100,8 +110,6 @@ def addItem(data, item_id=None):
 
     return document_to_dict(item_ref.get())
 
-
-create = update
 
 
 def delete(id):
