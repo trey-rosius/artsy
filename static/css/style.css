@@ -618,5 +618,10 @@ body {
     transform:translateY(-2rem);
     }
 
+    .flash{
+    color:red;
+    font-size:15px;
+    }
+
 
 

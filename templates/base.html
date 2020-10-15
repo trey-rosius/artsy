@@ -60,7 +60,9 @@
        
          <section class="main-section">
         {% block menu %} {% endblock %}
-
+ {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
    {% block content%} {%endblock%}
 {% if g.user %}
  <a href="{{url_for('item.add_item',user_id=g.user.user_id)}}" class="fab">

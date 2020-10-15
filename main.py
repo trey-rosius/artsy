@@ -40,11 +40,12 @@ app.config.update(
     MAX_CONTENT_LENGTH=8 * 1024 * 1024,
     ALLOWED_EXTENSIONS={'png', 'jpg', 'jpeg', 'gif'}
 )
-from blueprints import auth,profile,home,item
+from blueprints import auth,profile,home,item,cart
 app.register_blueprint(auth.bp)
 app.register_blueprint(profile.bp)
 app.register_blueprint(home.bp)
 app.register_blueprint(item.bp)
+app.register_blueprint(cart.bp)
 
 app.debug = False
 app.testing = False

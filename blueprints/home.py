@@ -1,4 +1,3 @@
-
 import functools
 
 from flask import (
@@ -14,10 +13,8 @@ from forms.register import RegisterForm
 bp = Blueprint('home', __name__)
 
 
-
 @bp.route('/')
 def index():
     items = firestore.load_items()
 
     return render_template('index.html', items=items)
-

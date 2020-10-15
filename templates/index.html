@@ -21,6 +21,7 @@
     </nav>
 {% endblock %}
 {% block content %}
+
 <div class="orders">
     {% for item in items %}
  <div class="order">
@@ -28,7 +29,7 @@
         <h5 class="order__price">{{item.price}}FCFA</h5>
         <p class ="order__desc">{{item.description}} </p>
 
-        <a class="order__btn">
+        <a href="{{url_for('cart.add_to_cart',user_id=g.user.user_id,item_id=item.id)}}" class="order__btn">
             Order Now
         </a>
     </div>

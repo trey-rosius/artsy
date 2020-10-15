@@ -70,14 +70,23 @@ def readUserInfo(user_id):
     return document_to_dict(snapshot)
 
 
-def add_to_cart(data: dict, user_id: str, cart_id: str):
+def add_to_cart(data: dict, user_id: str, item_id: str):
     db = firestore.Client()
-    if __name__ == '__main__':
-        cart_ref = db.collection(u'Users').document(user_id) \
-            .collection(u'Cart') \
-            .document(cart_id) \
-            .set(data, merge=True)
-    return document_to_dict(cart_ref)
+    cart_ref = db.collection(u'Cart').document(item_id).set(data, merge=True)
+    user_cart_ref = db.collection(u'Users').document(user_id).collection(u'Cart').document(item_id)
+    user_cart_ref.set(data, merge=True)
+    return document_to_dict(user_cart_ref.get())
+
+def get_cart_items(user_id:str,limit:int=100):
+    db = firestore.Client()
+
+    query = db.collection(u'Users').document(user_id).collection(u'Cart').limit(limit).order_by(u'item_id')
+
+    docs = query.stream()
+    docs = list(map(document_to_dict, docs))
+
+    return docs
+
 
 
 def read(book_id):
