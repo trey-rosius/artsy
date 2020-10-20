@@ -47,5 +47,5 @@ def add_to_cart(user_id: str, item_id: str):
 def view_cart(user_id: str):
     items = firestore.get_cart_items(user_id=user_id)
 
-    return render_template('cart.html', items=items)
+    return render_template('cart/cart.html', items=items)
 

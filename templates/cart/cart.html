@@ -1,6 +1,24 @@
 {% extends 'base.html' %}
 
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+ {% block menu %}
+              <div class="header">
 
+                <div class="header__title">
+                    <div class="header__title--text">
+                        Your Cart
+                    </div>
+                    <div class="header__title--hor">
+
+                    </div>
+                </div>
+
+
+
+            </div>
+             {% endblock %}
 {% block content %}
 <section class="cart">
 
@@ -44,67 +62,28 @@
 
                     </th>
                   </tr>
-
+ {% for item in items %}
                   <tr>
                       <td>
-                          <img src="/img/o1.jpg" alt="an image" class="product-img">
-                          <div class="product-name">Lorem Ipsum Dolor</div>
+                          <img src="{{item.image_url}}" alt="an image" class="product-img">
+                          <div class="product-name">{{item.name}}</div>
                       </td>
                       <td>
-                          <h4 class=product-price>2,500,000FCFA</h4>
+                          <h4 class=product-price>{{item.price}}FCFA</h4>
                       </td>
                       <td>
                           <button class="quantity-adjust">-</button>
-                        <strong>4</strong>
+                        <strong>{{item.quantity}}</strong>
                         <button class="quantity-adjust">+</button>
                     </td>
                     <td>
-                         <h4 class="product-subTotal">250.8908.9883FCFA</h4>
+                         <h4 class="product-subTotal">{{item.quantity * item.price}}FCFA</h4>
                     </td>
                     <td>
                         <button class="delete-product"> x</button>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                        <img src="/img/o1.jpg" alt="an image" class="product-img">
-                        <div class="product-name">Lorem Ipsum Dolor</div>
-                    </td>
-                    <td>
-                        <h4 class=product-price>2,500,000FCFA</h4>
-                    </td>
-                    <td>
-                        <button class="quantity-adjust">-</button>
-                      <strong>4</strong>
-                      <button class="quantity-adjust">+</button>
-                  </td>
-                  <td>
-                       <h4 class="product-subTotal">250.8908.9883FCFA</h4>
-                  </td>
-                  <td>
-                      <button class="delete-product"> x</button>
-                  </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="/img/o1.jpg" alt="an image" class="product-img">
-                        <div class="product-name">Lorem Ipsum Dolor</div>
-                    </td>
-                    <td>
-                        <h4 class=product-price>2,500,000FCFA</h4>
-                    </td>
-                    <td>
-                        <button class="quantity-adjust">-</button>
-                      <strong>4</strong>
-                      <button class="quantity-adjust">+</button>
-                  </td>
-                  <td>
-                       <h4 class="product-subTotal">250.8908.9883FCFA</h4>
-                  </td>
-                  <td>
-                      <button class="delete-product"> x</button>
-                  </td>
-                </tr>
+                  {% endfor %}
 
               </table>
 
@@ -131,7 +110,7 @@
 
               <section class="options">
                 <div class="options__box1">
-                    <img src="img/SVG/icon-cal.svg" class="options__box1--icon">
+                    <img src="/static/img/SVG/icon-cal.svg" class="options__box1--icon">
 
                     <div class="options__box1--title">
                         <strong>24/7 CUSTOMER SERVICE</strong>
@@ -141,7 +120,7 @@
                     </div>
                 </div>
                 <div class="options__box2">
-                    <img src="img/SVG/icon-service.svg" class="options__box2--icon">
+                    <img src="/static/img/SVG/icon-service.svg" class="options__box2--icon">
 
                     <div class="options__box2--title">
                         <strong>EASY ONLINE RETURNS</strong>
@@ -151,7 +130,7 @@
                     </div>
                 </div>
                 <div class="options__box3">
-                    <img src="img/SVG/icon-package.svg" class="options__box3--icon">
+                    <img src="/static/img/SVG/icon-package.svg" class="options__box3--icon">
 
                     <div class="options__box3--title">
                         <strong>SHIPPING GLOBALLY</strong>

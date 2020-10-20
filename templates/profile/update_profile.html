@@ -1,54 +1,4 @@
 {% extends "base.html" %}
-<html en="lang">
-
-    <head>
-
-
-        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto+Mono&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
-
-        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
-
-        <title>&mdash;artsy</title>
-    </head>
-    <body>
-
-        <div class="container">
-        <div class="sidebar">
-            <div class="sidebar__top">
-                <ul class="sidebar__top--list">
-                    <li class="sidebar__top--list--item"><a href="#" class="sidebar__top--item">facebook</a></li>
-                    <li class="sidebar__top--list--item"><a href="#" class="sidebar__top--item">instagram</a></li>
-                    <li class="sidebar__top--list--item"><a href="#" class="sidebar__top--item">twitter</a></li>
-                    <li class="sidebar__top--list--item"><a href="#" class="sidebar__top--item">whatsapp</a></li>
-
-                </ul>
-            </div>
-            <div class="sidebar__middle">
-                <img src="/static/img/SVG/account_white.svg" alt="Rosius" class="sidebar__middle--img">
-
-
-                  <svg class="sidebar__middle--cart">
-                      <use xlink:href="/static/img/SVG/shopping-bag.svg"></use>
-                  </svg>
-
-              </div>
-            <div class="sidebar__footer">
-                <div class="sidebar__footer--a">
-                    a
-                </div>
-                <div class="sidebar__footer--r">
-                    r
-                </div>
-                <div class="sidebar__footer--tsy">
-                    tsy
-                </div>
-            </div>
-
-
-        </div>
-
-         <section class="main-section">
 
     {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
@@ -103,13 +53,8 @@
 
 
 
-</section>
 
 
 
 
 
-        </div>
-
-    </body>
-</html>

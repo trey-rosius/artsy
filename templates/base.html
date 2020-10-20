@@ -37,10 +37,13 @@
 
                 {%endif%}
 
-                
-                  <svg class="sidebar__middle--cart">
+                <a href="{{ url_for('cart.view_cart',user_id=g.user.user_id)}}" class="sidebar__middle--cart">
+
+                    <svg class="sidebar__middle--cart">
                       <use xlink:href="/static/img/SVG/sprites.svg#icon-shopping-bag"></use>
                   </svg>
+                </a>
+
              
               </div>
             <div class="sidebar__footer">
