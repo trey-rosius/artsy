@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<section class="cart">
+
+
+
+               <div class="cart__option">
+
+                <div class="cart__icon">
+                    <div class="cart__icon--1">01</div>
+                    <div class="cart__icon--title">Shopping cart</div>
+                </div>
+                <div class="cart__icon">
+                    <div class="cart__icon--2">02</div>
+                    <div class="cart__icon--title">Check Out</div>
+                </div>
+                <div class="cart__icon">
+                    <div class="cart__icon--3">03</div>
+                    <div class="cart__icon--title">Order Complete</div>
+                </div>
+               </div>
+              <div class="cart__hor">
+
+              </div>
+
+              <table>
+                  <tr>
+
+                    <th>
+                        Item
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
+
+                    </th>
+                  </tr>
+
+                  <tr>
+                      <td>
+                          <img src="/img/o1.jpg" alt="an image" class="product-img">
+                          <div class="product-name">Lorem Ipsum Dolor</div>
+                      </td>
+                      <td>
+                          <h4 class=product-price>2,500,000FCFA</h4>
+                      </td>
+                      <td>
+                          <button class="quantity-adjust">-</button>
+                        <strong>4</strong>
+                        <button class="quantity-adjust">+</button>
+                    </td>
+                    <td>
+                         <h4 class="product-subTotal">250.8908.9883FCFA</h4>
+                    </td>
+                    <td>
+                        <button class="delete-product"> x</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <img src="/img/o1.jpg" alt="an image" class="product-img">
+                        <div class="product-name">Lorem Ipsum Dolor</div>
+                    </td>
+                    <td>
+                        <h4 class=product-price>2,500,000FCFA</h4>
+                    </td>
+                    <td>
+                        <button class="quantity-adjust">-</button>
+                      <strong>4</strong>
+                      <button class="quantity-adjust">+</button>
+                  </td>
+                  <td>
+                       <h4 class="product-subTotal">250.8908.9883FCFA</h4>
+                  </td>
+                  <td>
+                      <button class="delete-product"> x</button>
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/img/o1.jpg" alt="an image" class="product-img">
+                        <div class="product-name">Lorem Ipsum Dolor</div>
+                    </td>
+                    <td>
+                        <h4 class=product-price>2,500,000FCFA</h4>
+                    </td>
+                    <td>
+                        <button class="quantity-adjust">-</button>
+                      <strong>4</strong>
+                      <button class="quantity-adjust">+</button>
+                  </td>
+                  <td>
+                       <h4 class="product-subTotal">250.8908.9883FCFA</h4>
+                  </td>
+                  <td>
+                      <button class="delete-product"> x</button>
+                  </td>
+                </tr>
+
+              </table>
+
+              <section class="total">
+                  <div class="caption">
+
+                          <strong>Subtotal :</strong>
+                          <p>Shipping :</p>
+                          <p>Total :</p>
+
+                  </div>
+                  <div class="num">
+
+                    <p>
+                        <strong>250.000.000FCFA</strong>
+                    </p>
+                    <p>Free Shipping</p>
+                    <p> 250,000,000FCFA</p>
+                  </div>
+              </section>
+              <button class="continue">
+                  <a href="#">Continue</a>
+              </button>
+
+              <section class="options">
+                <div class="options__box1">
+                    <img src="img/SVG/icon-cal.svg" class="options__box1--icon">
+
+                    <div class="options__box1--title">
+                        <strong>24/7 CUSTOMER SERVICE</strong>
+                    </div>
+                    <div class="options__box1--title2">
+                        Call Us Anytime
+                    </div>
+                </div>
+                <div class="options__box2">
+                    <img src="img/SVG/icon-service.svg" class="options__box2--icon">
+
+                    <div class="options__box2--title">
+                        <strong>EASY ONLINE RETURNS</strong>
+                    </div>
+                    <div class="options__box2--title2">
+                        Send within 30 days
+                    </div>
+                </div>
+                <div class="options__box3">
+                    <img src="img/SVG/icon-package.svg" class="options__box3--icon">
+
+                    <div class="options__box3--title">
+                        <strong>SHIPPING GLOBALLY</strong>
+                    </div>
+                    <div class="options__box3--title2">
+                        Delivery in 4 Days
+                    </div>
+                </div>
+
+              </section>
+           </section>
+{% endblock %}

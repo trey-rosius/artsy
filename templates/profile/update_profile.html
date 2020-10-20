@@ -49,6 +49,7 @@
         </div>
 
          <section class="main-section">
+
     {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
@@ -86,7 +87,7 @@
                     {% for error in form.email.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-{{form.phone_number(placeholder=form.phone_number.label.text,size=32,class_="content__phone-number")}}
+            {{form.phone_number(placeholder=form.phone_number.label.text,size=32,class_="content__phone-number")}}
                        {{form.address(placeholder=form.address.label.text,size=32,class_="content__address")}}
 
 
