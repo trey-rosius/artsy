@@ -78,6 +78,31 @@ def add_to_cart(data: dict, user_id: str, item_id: str):
     return document_to_dict(user_cart_ref.get())
 
 
+def incrementItemQty(item_id: str,user_id:str):
+    db = firestore.Client()
+    cart_ref = db.collection(u'Users').document(user_id).collection(u'Cart').document(item_id)
+
+    cart_ref.update({u'quantity': firestore.Increment(1),
+                     u'timestamp': firestore.SERVER_TIMESTAMP})
+    return document_to_dict(cart_ref.get())
+
+def decrementItemQty(item_id: str,user_id:str):
+    db = firestore.Client()
+    cart_ref = db.collection(u'Users').document(user_id).collection(u'Cart').document(item_id)
+
+    cart_ref.update({u'quantity': firestore.Increment(-1),
+                     u'timestamp': firestore.SERVER_TIMESTAMP})
+    return document_to_dict(cart_ref.get())
+
+
+def deleteItemFromCart(item_id: str,user_id:str):
+    db = firestore.Client()
+    cart_ref = db.collection(u'Users').document(user_id).collection(u'Cart').document(item_id)
+
+    cart_ref.delete()
+    return -1
+
+
 def get_single_item(item_id: str):
     db = firestore.Client()
     item_ref = db.collection(u'Items').document(item_id)
