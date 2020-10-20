@@ -77,7 +77,16 @@ def add_to_cart(data: dict, user_id: str, item_id: str):
     user_cart_ref.set(data, merge=True)
     return document_to_dict(user_cart_ref.get())
 
-def get_cart_items(user_id:str,limit:int=100):
+
+def get_single_item(item_id: str):
+    db = firestore.Client()
+    item_ref = db.collection(u'Items').document(item_id)
+    snapshot = item_ref.get()
+
+    return document_to_dict(snapshot)
+
+
+def get_cart_items(user_id: str, limit: int = 100):
     db = firestore.Client()
 
     query = db.collection(u'Users').document(user_id).collection(u'Cart').limit(limit).order_by(u'item_id')
@@ -86,7 +95,6 @@ def get_cart_items(user_id:str,limit:int=100):
     docs = list(map(document_to_dict, docs))
 
     return docs
-
 
 
 def read(book_id):
@@ -118,7 +126,6 @@ def addItem(data, item_id=None):
     item_ref.set(data, merge=True)
 
     return document_to_dict(item_ref.get())
-
 
 
 def delete(id):
