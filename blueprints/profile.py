@@ -12,7 +12,6 @@ import google.cloud.logging
 import storage
 from forms.register import RegisterForm
 
-
 # firebase = pyrebase.initialize_app(config)
 from werkzeug.utils import secure_filename
 
@@ -51,9 +50,8 @@ def view_profile(user_id: str):
 
 @bp.route('/<user_id>/update', methods=['GET', 'POST'])
 def update_profile(user_id: str):
-
     form = ProfileForm()
-    user = firestore.readUserInfo(user_id)
+    user_to_dict = firestore.readUserInfo(user_id)
 
     if form.validate_on_submit():
         try:
@@ -71,9 +69,24 @@ def update_profile(user_id: str):
 
         except Exception as err:
             flash(err)
-    form.full_names.data = user['full_names']
-    form.email.data = user["email"]
-    form.phone_number.data = user["phone_number"]
-    form.address.data = user["address"]
-    form.photo.data = user["profile_pic"]
+
+    form.email.data = user_to_dict["email"]
+    if 'full_names' in user_to_dict:
+        form.full_names.data = user_to_dict['full_names']
+    else:
+        form.full_names.data = ''
+
+    if 'address' in user_to_dict:
+        form.address.data = user_to_dict["address"]
+    else:
+        form.address.data = ''
+    if 'phone_number' in user_to_dict:
+        form.phone_number.data = user_to_dict["phone_number"]
+    else:
+        form.phone_number.data = ''
+    if 'profile_pic' in user_to_dict:
+        form.phone_number.data = user_to_dict["profile_pic"]
+    else:
+        form.photo.data = ''
+
     return render_template('profile/update_profile.html', form=form)

@@ -87,9 +87,7 @@ def login():
             data = {
                 u'user_id': user['localId'],
                 u'email': user['email'],
-                u'phone_number':'',
-                u'full_names':'',
-                u'address':'',
+
                 u'login': True
 
             }
@@ -112,7 +110,7 @@ def login():
 @bp.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('home.list'))
+    return redirect(url_for('home.index'))
 
 def login_required(view):
     @functools.wraps(view)

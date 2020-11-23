@@ -72,7 +72,7 @@
                           <h4 class=product-price>{{item.price}}FCFA</h4>
                       </td>
                       <td>
-                          <a href="{{url_for('cart.incrementItemQty',user_id=item.user_id,item_id=item.item_id)}}" >
+                          <a href="{{url_for('cart.decrementItemQty',user_id=item.user_id,item_id=item.item_id)}}" >
                               <button class="quantity-adjust">
                               -
                           </button>
@@ -86,7 +86,9 @@
                          <h4 class="product-subTotal">{{item.quantity * item.price}}FCFA</h4>
                     </td>
                     <td>
+                        <a href="{{url_for('cart.deleteItemFromCart',user_id=item.user_id,item_id=item.item_id)}}" >
                         <button class="delete-product"> x</button>
+                        </a>
                     </td>
                   </tr>
                   {% endfor %}
