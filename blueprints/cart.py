@@ -31,7 +31,7 @@ def add_to_cart(user_id: str, item_id: str):
         u'item_id': item_id,
         u'name': item['name'],
         u'description': item['description'],
-        u'price': int(item['price']),
+        u'price': item['price'],
         u'image_url': item['image_url'],
         u'quantity': 1
 
