@@ -1,18 +1,14 @@
-import functools
+
 
 from flask import (
-    Blueprint, current_app, flash, g, redirect, render_template, request, session, url_for, json
+    Blueprint, current_app, flash, g, redirect, render_template, url_for
 )
 
-import pyrebase
 import firestore
-from forms.login import LoginForm
-from forms.profile import ProfileForm
-import google.cloud.logging
-import storage
-from forms.register import RegisterForm
 
-# firebase = pyrebase.initialize_app(config)
+from forms.profile import ProfileForm
+import storage
+
 from werkzeug.utils import secure_filename
 
 bp = Blueprint('profile', __name__, url_prefix='/profile')

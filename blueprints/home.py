@@ -1,14 +1,12 @@
-import functools
+
 
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for, json
+    Blueprint,  render_template,
 )
 
-import pyrebase
-import firestore
-from forms.login import LoginForm
 
-from forms.register import RegisterForm
+import firestore
+
 
 bp = Blueprint('home', __name__)
 

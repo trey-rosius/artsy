@@ -1,23 +1,12 @@
-import functools
-import os
 
 from flask import (
-    Blueprint, current_app, flash, g, redirect, render_template, request, session, url_for, json, app
+    Blueprint,  flash, g, redirect, render_template,  url_for
 )
-from pathlib import Path
-import pyrebase
-import firestore
-from blueprints import auth;
-from blueprints.auth import login_required
-from forms.add_item import AddItemForm
-from forms.login import LoginForm
-from forms.profile import ProfileForm
-import google.cloud.logging
-import storage
-from forms.register import RegisterForm
 
-# firebase = pyrebase.initialize_app(config)
-from werkzeug.utils import secure_filename
+import firestore
+
+from blueprints.auth import login_required
+
 
 bp = Blueprint('cart', __name__)
 

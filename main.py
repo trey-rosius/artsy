@@ -21,12 +21,6 @@ from google.cloud import error_reporting
 
 from werkzeug.exceptions import HTTPException
 import google.cloud.logging
-import storage
-
-
-# [START upload_image_file]
-from forms.login import LoginForm
-from forms.register import RegisterForm
 
 
 
@@ -55,9 +49,9 @@ if not app.testing:
     logging.basicConfig(level=logging.INFO)
     import os
 
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/imac/documents/service_acc/service_account.json"
-   # client = google.cloud.logging.Client()
-    client = google.cloud.logging.Client.from_service_account_json('/Users/imac/documents/service_acc/service_account.json')
+    #os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/imac/documents/service_acc/service_account.json"
+    client = google.cloud.logging.Client()
+    # client = google.cloud.logging.Client.from_service_account_json('/Users/imac/documents/service_acc/service_account.json')
     # Attaches a Google Stackdriver logging handler to the root logger
     client.setup_logging(logging.INFO)
 
@@ -109,4 +103,4 @@ def server_error(e):
 # This is only used when running locally. When running live, gunicorn runs
 # the application.
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)

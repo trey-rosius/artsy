@@ -28,8 +28,8 @@ def document_to_dict(doc):
 
 
 def load_items(limit=100):
-    #  db = firestore.Client()
-    db = firestore.Client.from_service_account_json('/Users/imac/documents/service_acc/service_account.json')
+    db = firestore.Client()
+    #db = firestore.Client.from_service_account_json('/Users/imac/documents/service_acc/service_account.json')
 
     query = db.collection(u'Items').limit(limit).order_by(u'item_id')
 
